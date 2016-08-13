@@ -1,3 +1,3 @@
 export { Root } from './root';
 export { Editor } from './editor';
-export { Preview } from './preview';
+export { Preview, Marked, SafeHTML } from './preview';

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as marked from 'marked';
+
 
 @Component({
   selector: 'app',
@@ -8,7 +8,7 @@ import * as marked from 'marked';
       <div class="container app">
         <div class="row app">
           <div class="col-xs app">
-            <editor (edit)="handleEdit($event)"></editor>
+            <editor (edit)="markdown = $event"></editor>
           </div>
           <div class="col-xs app">
             <preview [markdown]="markdown"></preview>
@@ -21,7 +21,4 @@ import * as marked from 'marked';
 export class Root {
   markdown: string = '';
 
-  handleEdit(raw) {
-    this.markdown = marked(raw);
-  }
 }
