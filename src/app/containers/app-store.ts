@@ -3,11 +3,11 @@ import { Observable, BehaviorSubject } from 'rxjs/Rx';
 
 const STORE_KEY = 'hello';
 
-const _state = getLocalStorage(STORE_KEY, {
+const _initial_state = getLocalStorage(STORE_KEY, {
   markdown: ''
 });
 
-const STORE = new BehaviorSubject(_state);
+const STORE = new BehaviorSubject(_initial_state);
 
 @Injectable()
 export class AppStore {

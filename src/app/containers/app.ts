@@ -8,10 +8,10 @@ import { AppStore } from './app-store';
       <div class="container app">
         <div class="row app">
           <div class="col-xs app">
-            <editor (edit)="onEdit($event)" [value]="state.markdown"></editor>
+            <editor (edit)="onEdit($event)" [value]="markdown"></editor>
           </div>
           <div class="col-xs app">
-            <preview [markdown]="state.markdown"></preview>
+            <preview [markdown]="markdown"></preview>
           </div>
         </div>
       </div>
@@ -19,15 +19,14 @@ import { AppStore } from './app-store';
   `
 })
 export class App {
-  state: any = {
-    markdown: ''
-  };
+  markdown = '';
 
   constructor(public appStore: AppStore) {
     appStore
       .changes
+      .pluck<string>('markdown')
       .filter(Boolean)
-      .subscribe(state => this.state = state);
+      .subscribe(markdown => this.markdown = markdown);
   }
 
   onEdit(raw) {
