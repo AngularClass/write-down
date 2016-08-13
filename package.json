@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 3000  --content-base src",
+    "serve": "webpack-dev-server",
     "start": "npm run serve"
   },
   "author": "",
@@ -13,9 +13,10 @@
   "devDependencies": {
     "awesome-typescript-loader": "^2.1.1",
     "tslint": "^3.14.0",
-    "typescript": "^1.8.10",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "typescript": "^2.0.0-beta",
+    "webpack": "^2.1.0-beta.20",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "^2.1.0-beta.0"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.5",

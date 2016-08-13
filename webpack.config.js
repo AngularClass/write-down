@@ -4,12 +4,18 @@ var webpack = require('webpack');
 var config = {
   cache: true,
   devtool: 'source-map',
+
   entry: './src/app/index.ts',
 
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
   },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProgressPlugin({})
+  ],
 
   module: {
     loaders: [
@@ -22,7 +28,11 @@ var config = {
   },
 
   devServer: {
+    contentBase: './src',
     historyApiFallback: true,
+    port: 3000,
+    hot: true,
+    inline: true,
     watchOptions: { aggregateTimeout: 300, poll: 1000 }
   },
 
