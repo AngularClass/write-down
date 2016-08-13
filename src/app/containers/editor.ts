@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 @Component({
   selector: 'editor',
   styles: [`
@@ -19,11 +19,12 @@ import { Component, Output, EventEmitter } from '@angular/core';
   `],
   template: `
     <div class="edit">
-      <textarea (input)="handleChange($event)"></textarea>
+      <textarea (input)="handleChange($event)" [value]="value" autofocus></textarea>
     </div>
   `
 })
 export class Editor {
+  @Input() value = '';
   @Output() edit = new EventEmitter();
 
   handleChange(event) {

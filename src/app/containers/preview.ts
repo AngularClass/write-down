@@ -8,6 +8,7 @@ import * as marked from 'marked';
 export class SafeHTML {
   constructor(private sanitizer: DomSanitizationService) {}
   transform(rawHTML) {
+    if (!rawHTML) return rawHTML;
     return this.sanitizer.bypassSecurityTrustHtml(rawHTML);
   }
 }
@@ -17,6 +18,7 @@ export class SafeHTML {
 })
 export class Marked {
   transform(raw) {
+    if (!raw) return raw;
     return marked(raw);
   }
 }

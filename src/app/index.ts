@@ -5,65 +5,33 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 enableProdMode();
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { Root, Preview, Editor, Marked, SafeHTML } from './containers';
+import {
+  Devtool,
+  App,
+  Preview,
+  Editor,
+  Marked,
+  SafeHTML,
+  AppStore
+} from './containers';
 
-
-@Component({
-  selector: 'devtool',
-  template: `
-    <div>
-      Devtool
-    </div>
-  `
-})
-class Devtool {
-
-}
 
 
 @NgModule({
   imports: [BrowserModule],
-  declarations: [Root, Preview, Editor, Marked, SafeHTML],
-  bootstrap: [Root]
+  declarations: [App, Devtool, Preview, Editor, Marked, SafeHTML],
+  bootstrap: [App, Devtool],
+  providers: [AppStore]
 })
 class AppModule {}
 
-@NgModule({
-  imports: [BrowserModule],
-  declarations: [Devtool],
-  bootstrap: [Devtool]
-})
-class DevtoolModule {}
-
-const platform = platformBrowserDynamic();
-
-export function bootstrap(module) {
-  return platform.bootstrapModule(module);
+export function main() {
+  return platformBrowserDynamic().bootstrapModule(AppModule);
 }
 
 
 
-
-
-// Hot Module Replacement
-
-export function bootstrapDomReady() {
-  // bootstrap after document is ready
-  document.addEventListener('DOMContentLoaded', () => {
-    bootstrap(AppModule);
-    bootstrap(DevtoolModule);
-  });
-}
-
+main();
 if (module.hot) {
-  // activate hot module reload
-  if (document.readyState === 'complete') {
-    bootstrap(AppModule)
-    bootstrap(DevtoolModule);
-  } else {
-    bootstrapDomReady();
-  }
   module.hot.accept();
-} else {
-  bootstrapDomReady();
 }
