@@ -29,6 +29,4 @@ export function main() {
   return platformBrowserDynamic().bootstrapModule(AppModule);
 }
 
-
-
-main();
+document.addEventListener('DOMContentLoaded', main);
