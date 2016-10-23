@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs/Rx';
+import 'rxjs/operator/do';
 
 const STORE_KEY = 'hello';
 
@@ -14,7 +15,7 @@ export class AppStore {
   private _store = STORE;
   changes = this._store
     .asObservable()
-    .distinctUntilChanged();
+    .distinctUntilChanged()
 
   constructor() {
     const unload = Observable.fromEvent(window, 'beforeunload');

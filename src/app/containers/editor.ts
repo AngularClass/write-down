@@ -28,6 +28,7 @@ export class Editor {
   @Output() edit = new EventEmitter();
 
   handleChange(event) {
+    console.log('next ', event.target.value)
     this.edit.next(event.target.value);
   }
 }

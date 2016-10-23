@@ -25,7 +25,6 @@ export class App {
     appStore
       .changes
       .pluck<string>('markdown')
-      .filter(Boolean)
       .subscribe(markdown => this.markdown = markdown);
   }
 
