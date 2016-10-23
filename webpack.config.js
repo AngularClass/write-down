@@ -13,6 +13,14 @@ var config = {
   },
 
   plugins: [
+    new webpack.ContextReplacementPlugin(
+      // The (\\|\/) piece accounts for path separators in *nix and Windows
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      path.join(__dirname, './src'),
+      {
+        /* router_path: directory_path */
+      }
+    ),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProgressPlugin({})
   ],
@@ -24,7 +32,7 @@ var config = {
   },
 
   resolve: {
-    extensions: ['', '.ts', '.js', '.json']
+    extensions: ['.ts', '.js', '.json']
   },
 
   devServer: {
