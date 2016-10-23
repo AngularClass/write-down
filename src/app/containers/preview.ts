@@ -26,7 +26,7 @@ export class Marked {
 @Component({
   selector: 'preview',
   template: `
-    <div class="edit" [innerHTML]="_markdown | marked | safeHTML"></div>
+    <div class="edit" [innerHTML]="markdown | marked | safeHTML"></div>
   `
 })
 export class Preview {
