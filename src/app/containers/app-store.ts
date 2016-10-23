@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs/Rx';
-import 'rxjs/operator/do';
 
 const STORE_KEY = 'hello';
+
+interface AppState {
+  markdown: string;
+
+  [key: string]: any;
+}
 
 const _initial_state = getLocalStorage(STORE_KEY, {
   markdown: ''
 });
 
-const STORE = new BehaviorSubject(_initial_state);
+const STORE = new BehaviorSubject<AppState>(_initial_state);
 
 @Injectable()
 export class AppStore {

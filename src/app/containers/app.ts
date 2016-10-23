@@ -24,14 +24,14 @@ export class App {
   constructor(public appStore: AppStore) {
     appStore
       .changes
-      .pluck<string>('markdown')
-      .subscribe(markdown => this.markdown = markdown);
+      .map(state => state.markdown)
+      .subscribe((markdown) => this.markdown = markdown);
   }
 
   onEdit(raw) {
-    var state = this.appStore.getState();
+    const state = this.appStore.getState();
 
-    var newState = Object.assign({}, state, {
+    const newState = Object.assign({}, state, {
       markdown: raw
     });
 
